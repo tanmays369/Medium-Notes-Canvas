@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Medium Notes Canvas</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Medium + Towards Data Science</p>
+          <h1>Notes Canvas</h1>
+        </div>
+        <span id="status" class="status">Ready</span>
+      </header>
+
+      <section class="panel article-panel">
+        <div class="panel-heading">
+          <h2>Article</h2>
+          <button id="read-btn" type="button">Read Page</button>
+        </div>
+        <p id="article-title" class="article-title">Open a Medium or Towards Data Science article, then read the page.</p>
+        <p id="article-meta" class="muted"></p>
+        <p id="article-excerpt" class="excerpt"></p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <h2>Generation Setup</h2>
+          <button id="generate-btn" type="button" disabled>Generate</button>
+        </div>
+        <label>
+          Focus question
+          <input id="focus-question" type="text" placeholder="What are you trying to learn from this article?">
+        </label>
+        <label>
+          Note depth
+          <select id="note-depth">
+            <option value="deep">Deep study notes</option>
+            <option value="research">Research brief</option>
+            <option value="exam">Exam prep with flashcards</option>
+            <option value="implementation">Implementation/action plan</option>
+          </select>
+        </label>
+        <label>
+          Manual highlights
+          <textarea id="manual-highlights" class="short-textarea" placeholder="Paste quotes, rough notes, or points you want the LLM to emphasize."></textarea>
+        </label>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <h2>Notebook</h2>
+          <span id="dirty-state" class="muted">Unsaved</span>
+        </div>
+        <label>
+          Note title
+          <input id="note-title" type="text" placeholder="Saved note title">
+        </label>
+        <label>
+          Tags
+          <input id="note-tags" type="text" placeholder="ai, product, writing">
+        </label>
+        <textarea id="notes" placeholder="Generated or manual notes appear here. Edit them before saving."></textarea>
+        <p class="muted">Notes are not saved automatically. Click Save Notes when you want to keep this version.</p>
+        <div class="actions">
+          <button id="save-btn" type="button" disabled>Save Notes</button>
+          <button id="copy-btn" type="button" disabled>Copy</button>
+        </div>
+      </section>
+
+      <section class="panel saved-panel">
+        <div class="panel-heading">
+          <h2>Saved Article Notes</h2>
+          <button id="refresh-saved-btn" type="button">Refresh</button>
+        </div>
+        <div id="saved-list" class="saved-list">
+          <p class="muted">No saved notes yet.</p>
+        </div>
+      </section>
+
+      <section class="panel logs-panel">
+        <div class="panel-heading">
+          <h2>LLM Logs</h2>
+          <button id="clear-logs-btn" type="button">Clear</button>
+        </div>
+        <div id="logs" class="logs">
+          <p class="muted">No LLM calls yet.</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

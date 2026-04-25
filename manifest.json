@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Medium Notes Canvas",
+  "version": "1.0.0",
+  "description": "Read Medium and Towards Data Science articles, generate thorough notes, save notes manually.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "medium-notes-canvas@local.extension",
+      "strict_min_version": "115.0"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://medium.com/*",
+    "https://*.medium.com/*",
+    "https://towardsdatascience.com/*",
+    "https://*.towardsdatascience.com/*",
+    "https://text.pollinations.ai/*"
+  ],
+  "action": {
+    "default_title": "Medium Notes Canvas",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://medium.com/*",
+        "https://*.medium.com/*",
+        "https://towardsdatascience.com/*",
+        "https://*.towardsdatascience.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
